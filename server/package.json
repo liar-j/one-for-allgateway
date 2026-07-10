@@ -12,7 +12,6 @@
     "cookie-parser": "^1.4.6",
     "multer": "^1.4.5-lts.1",
     "@supabase/supabase-js": "^2.40.0",
-    "@barry.jiang/dingtalk-aiapp-infra": "^1.0.0",
     "@chen0825/aiapp-ability": ">=0.1.18"
   },
   "devDependencies": {

@@ -81,7 +81,7 @@ curl http://localhost:9000/api/vendor-api-keys
 - 创建了 [`server/.env.example`](server/.env.example) 文件
 - 包含所有必需的配置项及注释说明：
   ```env
-  AI_APP_PLATFORM_ORIGIN=https://ai-app.dingtalk.com
+  AI_APP_PLATFORM_ORIGIN=https://ai-app.example.com
   SUPABASE_URL=your_supabase_project_url
   SUPABASE_ANON_KEY=your_supabase_anon_key
   APP_ID=your_app_id
@@ -179,7 +179,6 @@ cp server/.env.example server/.env
   "cors": "^2.8.5",
   "cookie-parser": "^1.4.6",
   "@supabase/supabase-js": "^2.40.0",
-  "@barry.jiang/dingtalk-aiapp-infra": "^1.0.0",
   "@chen0825/aiapp-ability": ">=0.1.18"
 }
 ```

@@ -89,8 +89,7 @@ router.get('/employees/:id', async (req: any, res): Promise<void> => {
 });
 
 
-// ---- User management routes (Supabase only) ----
-// Note: These routes throw 501 when DingtalkContactsProvider is active.
+// ---- User management routes ----
 
 router.get('/users', async (req: any, res) => {
   try {

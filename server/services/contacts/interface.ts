@@ -1,7 +1,6 @@
 // ============================================================
 // Unified Contacts Service Interface
-// Both DingtalkContactsProvider and SupabaseContactsProvider
-// must implement this interface.
+// All contacts providers must implement this interface.
 // ============================================================
 
 /** 员工归属部门的最小描述（ID 与名称成对，避免出现 ID 列表与名称数组错位的歧义）。 */
@@ -108,7 +107,7 @@ export interface UpdateUserInput {
 }
 
 export interface IContactsProvider {
-  // ---- Employee (read-only, works for both DingTalk and Supabase) ----
+  // ---- Employee (read-only) ----
   searchEmployees(query: string, offset?: number, limit?: number): Promise<SearchResult<Employee>>;
   getEmployeeById(emp_id: string): Promise<Employee | null>;
   listEmployeesByDept(dept_id: string, offset?: number, limit?: number): Promise<SearchResult<Employee>>;
@@ -120,8 +119,6 @@ export interface IContactsProvider {
   searchDepts(key: string, offset?: number, limit?: number): Promise<DeptSearchResult>;
 
   // ---- User management (write operations) ----
-  // DingtalkContactsProvider returns null / throws UnsupportedError for these.
-  // SupabaseContactsProvider provides full implementation.
   listUsers(offset?: number, limit?: number): Promise<SearchResult<UserProfile>>;
   getUserById(emp_id: string): Promise<UserProfile | null>;
   createUser(input: CreateUserInput): Promise<UserProfile>;

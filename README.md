@@ -12,7 +12,6 @@
 - **智能路由**：基于任务类型自动匹配最优模型,支持负载均衡策略
 - **细粒度控制**：独立的平台访问密钥与厂商API密钥隔离,保障安全
 - **完整审计**：全链路调用日志追踪,支持Token消耗统计与费用估算
-- **企业级集成**：深度集成钉钉组织架构,实现基于企业的权限管理
 
 ## ✨ 核心功能
 
@@ -109,7 +108,6 @@
 |------|------|
 | Node.js + Express | Web服务器 |
 | TypeScript | 类型安全 |
-| @barry.jiang/dingtalk-aiapp-infra | 钉钉集成中间件 |
 | Supabase (PostgreSQL) | 数据库 |
 | Row Level Security (RLS) | 数据行级权限控制 |
 
@@ -179,7 +177,6 @@
 - ✅ 频率限制防止滥用
 - ✅ 密钥过期时间管理
 - ✅ 数据库Row Level Security (RLS) 保障数据隔离
-- ✅ 基于钉钉企业组织的身份认证
 
 ## 📁 项目结构
 
@@ -209,7 +206,6 @@ one-for-allgateway/
 │   │   └── vendorApiKeyRoutes.ts    # 厂商密钥管理
 │   ├── services/                    # 业务服务层
 │   │   ├── contacts/                # 通讯录服务
-│   │   │   ├── dingtalk_provider.ts # 钉钉数据源
 │   │   │   ├── supabase_contacts_provider.ts
 │   │   │   ├── interface.ts
 │   │   │   └── index.ts
@@ -282,7 +278,6 @@ one-for-allgateway/
 
 - Node.js >= 18.x
 - PostgreSQL (Supabase) 或兼容数据库
-- 钉钉开放平台应用配置
 
 ### 安装步骤
 
@@ -310,10 +305,6 @@ cd ..
 在 `server` 目录下创建 `.env` 文件：
 
 ```env
-# 钉钉配置
-DINGTALK_APP_KEY=your_dingtalk_app_key
-DINGTALK_APP_SECRET=your_dingtalk_app_secret
-
 # 数据库配置
 SUPABASE_URL=your_supabase_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -374,7 +365,7 @@ npm run build
 
 ### 认证说明
 
-- **需要钉钉登录的接口**：标记为 `@NeedLogin`,通过钉钉OAuth获取用户身份
+- **需要登录的接口**：标记为 `@NeedLogin`,通过OAuth获取用户身份
 - **公开接口**：使用平台访问密钥认证,Header中携带 `Authorization: Bearer <access_key>`
 
 ### 核心接口清单
@@ -458,7 +449,7 @@ POST /api/proxy/v1/chat
 
 响应包含 `_routing` 字段展示路由信息。
 
-#### 公开代理端点（免钉钉登录）
+#### 公开代理端点（免登录）
 
 ```
 POST /api/public/proxy/v1/chat
@@ -633,7 +624,6 @@ npm run build # 构建验证
 - [Radix UI](https://www.radix-ui.com/) - 无障碍UI原语
 - [Recharts](https://recharts.org/) - 强大的图表库
 - [Tiptap](https://tiptap.dev/) - 灵活的富文本编辑器
-- [钉钉开放平台](https://open.dingtalk.com/) - 企业级集成支持
 
 ---
 

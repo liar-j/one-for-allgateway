@@ -48,7 +48,6 @@ npm install
 - cors
 - cookie-parser
 - @supabase/supabase-js
-- @barry.jiang/dingtalk-aiapp-infra
 - @chen0825/aiapp-ability
 
 ### 2. 环境变量配置
@@ -56,7 +55,7 @@ npm install
 在 `server` 目录下创建 `.env` 文件（可基于 `.env.example` 复制）：
 
 ```env
-AI_APP_PLATFORM_ORIGIN=https://ai-app.dingtalk.com
+AI_APP_PLATFORM_ORIGIN=https://ai-app.example.com
 SUPABASE_URL=your_supabase_project_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
 APP_ID=your_app_id
@@ -67,7 +66,6 @@ BUCKET_NAME=your_bucket_name
 **重要提示**: 
 - `SUPABASE_URL` 和 `SUPABASE_ANON_KEY` 是必需的
 - 从 Supabase 项目设置中获取这些值
-- `APP_ID` 和 `CORP_ID` 需要从钉钉开放平台获取
 
 ### 3. 数据库初始化
 
@@ -171,9 +169,9 @@ npm start
 
 ### 4. 认证问题
 
-**现象**: 访问页面时重定向到钉钉登录
-- **原因**: 正常行为，需要钉钉 OAuth 认证
-- **解决**: 确保已配置钉钉应用，或在免登白名单中添加测试路径
+**现象**: 访问页面时重定向到登录页
+- **原因**: 正常行为，需要 OAuth 认证
+- **解决**: 确保已配置认证，或在免登白名单中添加测试路径
 
 **现象**: 401 Unauthorized
 - **原因**: Token 无效或过期
@@ -238,7 +236,7 @@ cd server && npx tsc --noEmit
    - 使用 Row Level Security (RLS) 隔离数据
 
 3. **访问控制**
-   - 大部分接口需要钉钉登录
+   - 大部分接口需要登录
    - 公开代理接口使用平台访问密钥认证
    - 支持 IP 白名单和频率限制
 

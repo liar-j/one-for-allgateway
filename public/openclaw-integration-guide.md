@@ -36,7 +36,7 @@ OpenClaw 配置 `base_url` 时，**必须包含 `/api` 前缀**：
 ❌ 错误：https://your-domain.ai-app.pub/public/proxy/v1/chat
 ```
 
-> ⚠️ 如果缺少 `/api` 前缀，请求会被钉钉登录中间件拦截，返回 401 登录跳转。
+> ⚠️ 如果缺少 `/api` 前缀，请求会被登录中间件拦截，返回 401。
 
 ---
 
@@ -226,7 +226,7 @@ curl -X POST https://your-domain.ai-app.pub/api/public/proxy/chat \
 
 | 错误信息 | 原因 |
 |---|---|
-| `请先登录` (401) | **请求路径缺少 `/api` 前缀**，被钉钉登录中间件拦截 |
+| `请先登录` (401) | **请求路径缺少 `/api` 前缀**，被登录中间件拦截 |
 | `Invalid access key` (401) | 密钥无效或未提供 |
 | `Access key is disabled` (403) | 密钥已禁用 |
 | `Access key has expired` (403) | 密钥已过期 |

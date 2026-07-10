@@ -171,7 +171,7 @@ function buildLoginRedirectUrl(req: any): string {
   const cleanQueryString = cleanQueryParts.length > 0 ? '?' + cleanQueryParts.join('&') : '';
   const continueUrl = `${protocol}://${host}${pathname}${cleanQueryString}`;
 
-  let loginUrl = `${ENV.aiappPlatformOrigin}/oauth/dingtalk-login?continue_url=${encodeURIComponent(continueUrl)}`;
+  let loginUrl = `${ENV.aiappPlatformOrigin}/oauth/login?continue_url=${encodeURIComponent(continueUrl)}`;
   if (aiappAuthToken) {
     loginUrl += `&aiapp_auth_token=${encodeURIComponent(aiappAuthToken)}`;
   }

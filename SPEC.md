@@ -216,9 +216,9 @@ src/
 
 ## 4. 鉴权策略 [LOCKED]
 
-AUTH_STRATEGY: dingtalk-platform
+AUTH_STRATEGY: supabase-platform
 
-依赖钉钉平台访问控制，不生成登录页，不使用 supabase.auth.* 相关 API
+依赖 Supabase 平台访问控制，不生成登录页
 
 ---
 
@@ -783,11 +783,11 @@ POST /api/access-keys/:id/regenerate
 Response:
   { success: true, data: { id: number, access_key: string, ... } }  // 重新生成密钥
 
-#### 公开代理端点（免钉钉登录，使用平台访问密钥认证）
+#### 公开代理端点（免登录，使用平台访问密钥认证）
 
 页面路径：/api/public/*（外部系统调用）
 
-// 无标注 - 使用平台访问密钥认证（非钉钉登录）
+// 无标注 - 使用平台访问密钥认证
 POST /api/public/proxy/v1/chat
 Request Headers:
   Authorization: Bearer <access_key>   // 或 X-API-Key: <access_key>

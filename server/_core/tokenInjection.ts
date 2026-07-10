@@ -13,7 +13,7 @@ const htmlRoot = path.join(__dirname, '..', '..');
  *   1. ?access_token=&refresh_token=
  *      —— 顶层跳转 / 平台 OAuth 链路（原有），注入 window.__SUPABASE_*
  *   2. ?ticket=<uuid>
- *      —— 第三方 iframe 嵌入鉴权（如钉钉 AI 表格）。注入一段补丁脚本：
+ *      —— 第三方 iframe 嵌入鉴权。注入一段补丁脚本：
  *         a) 把 ticket 存 sessionStorage，兜底 SPA pushState 摘掉 URL 后的刷新
  *         b) monkey-patch window.fetch：对 /aitable/v2/* 请求，若 Authorization
  *            缺失或为 'Bearer' / 'Bearer null' / 'Bearer undefined' 空载，

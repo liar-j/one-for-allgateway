@@ -40,7 +40,7 @@ app.use(createTokenInjectionMiddleware());
 
 app.use(express.static(path.join(__dirname, '..')));
 
-// 公开代理接口（不需要钉钉登录，使用平台访问密钥认证）
+// 公开代理接口（不需要登录，使用平台访问密钥认证）
 // 必须在 need_login 之前注册，否则会被登录中间件拦截返回 302
 app.use('/api/public', publicProxyRoutes);
 
@@ -61,10 +61,10 @@ app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/routing-rules', routingRoutes);
 app.use('/api/proxy', routingRoutes);
 
-// 平台访问密钥管理（需要钉钉登录）
+// 平台访问密钥管理（需要登录）
 app.use('/api/access-keys', accessKeyRoutes);
 
-// 代理调用日志（需要钉钉登录）
+// 代理调用日志（需要登录）
 app.use('/api/proxy-logs', proxyLogRoutes);
 
 // default route (don't modify)
